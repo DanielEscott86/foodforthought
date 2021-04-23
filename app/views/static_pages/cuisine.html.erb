@@ -1,0 +1,43 @@
+<% provide(:title, "Recipes") %>
+<p id="notice"><%= notice %></p>
+
+<div class="mainCont">
+<% if @recipes.length == 0 %>
+
+We have no products matching this search
+
+<% end %>
+  
+
+  <h1>Recipies</h1>
+  
+    <% @recipes.each do |recipe| %>
+
+      <div class="itemhols">
+
+       <h1><%= recipe.title %></h1>
+        <p>
+            <strong>Cuisine:</strong>
+            <%= recipe.cuisine %>
+        </p>
+        
+        <p>
+            <strong>Dietary Requirement:</strong>
+            <%= recipe.dietary %>
+        </p>
+
+        <p>
+            <strong>Uploaded By:</strong>
+            <%= recipe.user.username %>
+        </p>
+        
+        <p>
+        <%= link_to 'Show',  recipe, :class => "button", :role => "button" %>
+        </p>
+      </div>  
+    <% end %>
+</div>
+<br>
+<% if user_signed_in? %>
+<%= link_to 'New Recipe', new_recipe_path, :class => "button", :role => "button" %>
+<% end %>

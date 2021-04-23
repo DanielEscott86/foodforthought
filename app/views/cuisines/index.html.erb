@@ -1,0 +1,32 @@
+<% provide(:title, "Cuisines") %>
+<div class="mainCont">
+<p id="notice"><%= notice %></p>
+
+<h1>Cuisines</h1>
+
+    <% @cuisines.each do |cuisine| %>
+
+      <div class="itemhols">
+   
+
+        <a href="/cuisine/<%= cuisine.title %>"><img src="/assets/<%= cuisine.image %>" alt="<%= cuisine.title %>" class="homeIm"></a>
+        <h1><%= cuisine.title %></h1>
+        <p><%= cuisine.description %></p>
+        
+      </div>
+        <% if user_signed_in? %> 
+        <% if current_user.admin? %>
+        <td><%= link_to 'Show', cuisine, :class => "button", :role => "button" %></td>
+        <td><%= link_to 'Edit', edit_cuisine_path(cuisine), :class => "button", :role => "button" %></td>
+        <td><%= link_to 'Destroy', cuisine, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button", :role => "button" %></td>
+        <% end %>
+        <% end %>
+
+    <% end %>
+</div>
+<br>
+<% if user_signed_in? %> 
+<% if current_user.admin? %>
+<%= link_to 'New Cuisine', new_cuisine_path, :class => "button", :role => "button" %>
+<% end %>
+<% end %>

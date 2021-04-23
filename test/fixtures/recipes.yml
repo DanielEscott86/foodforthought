@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  ingredients: MyText
+  method: MyText
+  cuisine: MyString
+  user: one
+  dietary: MyString
+
+two:
+  title: MyString
+  ingredients: MyText
+  method: MyText
+  cuisine: MyString
+  user: two
+  dietary: MyString

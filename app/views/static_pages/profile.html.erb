@@ -1,0 +1,62 @@
+<% provide(:title, "Profile") %>
+<div class="mainCont">
+<% if user_signed_in? %>  
+<% if current_user.admin? %>
+<p id="notice"><%= notice %></p>
+    <h1>Admin Portal</h1>
+    <p>Please follow links to the administration sites</p>
+    <table id="tab">
+      <thead>
+        <tr>
+          <th>Cuisines</th>
+          <th>Recipes</th>
+          <th>Users</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+    
+      <tbody>
+          <tr>
+            <td><a href="/cuisines/"><img src="/assets/frenchim.jpg" alt="cuisines" class="homeIm"></a></td>
+            <td><a href="/recipes/"><img src="/assets/mexicanim.jpg" alt="recipes" class="homeIm"></a></td>
+            <td><a href="/users/"><img src="/assets/italianim.jpg" alt="users" class="homeIm"></a></td>
+          </tr>
+      </tbody>
+    </table>
+<% end %>
+
+    <h1>Profile</h1>
+      <p>Hi <%= current_user.username %>, welcome back</p>
+      <p><strong>Username:</strong> <%= current_user.username %></p>
+      <p><strong>Email:</strong> <%= current_user.email %></p>
+      <%= link_to 'Change Password', edit_user_registration_path, :class => "button", :role => "button" %>
+      
+    <h1>My Recipes</h1>  
+        <% @recipes.each do |recipe| %>
+          <div class="itemhols">
+      
+          <h1><%= recipe.title %></h1>
+              <p>
+                  <strong>Cuisine:</strong>
+                  <%= recipe.cuisine %>
+              </p>
+              
+              <p>
+                  <strong>Dietary Requirement:</strong>
+                  <%= recipe.dietary %>
+              </p>
+      
+              <p>
+                  <strong>Uploaded By:</strong>
+                  <%= recipe.user.username %>
+              </p>
+              
+              <p>
+              <%= link_to 'Show',  recipe, :class => "button", :role => "button" %>
+              </p>
+          </div>  
+        <% end %>
+
+<% end %>
+</div>
+<%= link_to 'New Recipe', new_recipe_path, :class => "button", :role => "button" %>

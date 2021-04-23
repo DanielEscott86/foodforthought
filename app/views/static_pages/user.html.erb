@@ -1,0 +1,23 @@
+<% provide(:title, "Users") %>
+<div class="mainCont">
+<% if current_user.admin? %>
+<p id="notice"><%= notice %></p>
+
+<h1>Users</h1>
+    <% @users.each do |user| %>
+        <div class="itemhols">
+        <h1>Username: <%= user.username %></h1>
+        <p>Email: <%= user.email %></p>
+        <% if user.admin %>
+        <p>Role: Administrator</p>
+        <% else %>
+        <p>Role: Normal User</p>
+        <% end %>
+        <a href="/makeadmin/<%= user.id %>" class="button">Make <%= user.email %> admin</a>
+        <a href="/removeadmin/<%= user.id %>" class="button">Remove <%= user.email %> admin</a>
+        </div>
+    <% end %>
+<% else %>
+  <p>No access</p>
+<% end %>    
+</div>

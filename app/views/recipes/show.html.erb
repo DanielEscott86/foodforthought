@@ -1,0 +1,44 @@
+<% provide(:title, "Recipies") %>
+<div class="mainCont">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @recipe.title %>
+</p>
+
+<p>
+  <strong>Ingredients:</strong>
+  <%= @recipe.ingredients %>
+</p>
+
+<p>
+  <strong>Method:</strong>
+  <%= @recipe.method %>
+</p>
+
+<p>
+  <strong>Cuisine:</strong>
+  <%= @recipe.cuisine %>
+</p>
+
+<p>
+  <strong>Uploaded By:</strong>
+  <%= @recipe.user.username %>
+</p>
+
+<p>
+  <strong>Dietary Requirement:</strong>
+  <%= @recipe.dietary %>
+</p>
+<%# adds comments from commonator gem %>
+<%= commontator_thread(@recipe) %>
+
+<% if user_signed_in? %>
+<% if @recipe.user.email == current_user.email || current_user.admin? %>
+<%= link_to 'Edit', edit_recipe_path(@recipe), :class => "button", :role => "button" %> |
+<%= link_to 'Destroy', @recipe, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button", :role => "button" %>
+<% end %>
+<% end %>
+<%= link_to 'Back', recipes_path, :class => "button", :role => "button" %>
+</div>

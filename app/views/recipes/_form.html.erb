@@ -1,0 +1,55 @@
+
+<div class="mainCont">
+  <h1>Hi! Please fill out the form below.</h1>
+    
+<%= form_for(recipe) do |f| %>
+  <% if recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+      <% recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  
+
+  
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
+
+  <div class="field">
+    <%= f.label :ingredients %>
+    <%= f.text_area :ingredients, style: 'width:100%;' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :method %>
+    <%= f.text_area :method, style: 'width:100%;' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cuisine %>
+    <%= f.text_field :cuisine %>
+  </div>
+
+  <p>Need suggestions? Italian? Thai? Mexican? Cant decide? put N/A</p>
+
+  <div class="field">
+    <%= f.label :dietary %>
+    <%= f.text_field :dietary %>
+  </div>
+  
+  <p>Need suggestions? Vegan? Celiac? Lactose Intollerant? Cant decide? put N/A</p>
+  <div class="actions">
+    
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>
