@@ -12,4 +12,6 @@ class UserController < ApplicationController
         redirect_to :controller => :recipes
     end
     
+    
+    
 end

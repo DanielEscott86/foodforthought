@@ -1,5 +1,5 @@
 <% provide(:title, "Profile") %>
-<div class="mainCont">
+<div class="mainCon">
 <% if user_signed_in? %>  
 <% if current_user.admin? %>
 <p id="notice"><%= notice %></p>
@@ -33,7 +33,7 @@
       
     <h1>My Recipes</h1>  
         <% @recipes.each do |recipe| %>
-          <div class="itemhols">
+          <div class="itemhol">
       
           <h1><%= recipe.title %></h1>
               <p>

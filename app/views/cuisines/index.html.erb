@@ -1,12 +1,12 @@
 <% provide(:title, "Cuisines") %>
-<div class="mainCont">
+<div class="mainCon">
 <p id="notice"><%= notice %></p>
 
 <h1>Cuisines</h1>
 
     <% @cuisines.each do |cuisine| %>
 
-      <div class="itemhols">
+      <div class="itemhol">
    
 
         <a href="/cuisine/<%= cuisine.title %>"><img src="/assets/<%= cuisine.image %>" alt="<%= cuisine.title %>" class="homeIm"></a>

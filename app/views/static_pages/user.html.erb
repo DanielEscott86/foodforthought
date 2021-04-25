@@ -1,11 +1,11 @@
 <% provide(:title, "Users") %>
-<div class="mainCont">
+<div class="mainCon">
 <% if current_user.admin? %>
 <p id="notice"><%= notice %></p>
 
 <h1>Users</h1>
     <% @users.each do |user| %>
-        <div class="itemhols">
+        <div class="itemhol">
         <h1>Username: <%= user.username %></h1>
         <p>Email: <%= user.email %></p>
         <% if user.admin %>
